@@ -1,5 +1,6 @@
 import React from 'react';
 import useAuth from '../../hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const { googleSignIn } = useAuth();
@@ -15,6 +16,9 @@ const Login = () => {
     
     return (
         <div>
+            <Helmet>
+                <title>MediCamp | Login</title>
+            </Helmet>
             <button onClick={handleSocialLogin} className='btn btn-primary'>Google</button>
         </div>
     );

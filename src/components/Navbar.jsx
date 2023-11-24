@@ -19,13 +19,14 @@ const Navbar = () => {
             <div className="text-gray-600 body-font">
                 <div className=" mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
                     <Link to="/" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                        <img src="https://i.ibb.co/1XFsYWr/logo.png" className='h-10' alt="" />
+                        <img src="https://i.ibb.co/1XFsYWr/logo.png" className='h-14' alt="" />
                         <span className="text-xl">MediCamp</span>
                     </Link>
                     <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                        <a className="mr-5 hover:text-gray-900">First Link</a>
-                        <a className="mr-5 hover:text-gray-900">Second Link</a>
-                        <a className="mr-5 hover:text-gray-900">Third Link</a>
+                        <Link to="/" className="mr-5 hover:text-gray-900">Home</Link>
+                        <Link to="/available-camp" className="mr-5 hover:text-gray-900">Available Camps</Link>
+                        <Link to="/dashboard" className="mr-5 hover:text-gray-900">Dashboard</Link>
+                        <Link to="/contact-us" className="mr-5 hover:text-gray-900">Contact Us</Link>
                     </nav>
 
                     {
