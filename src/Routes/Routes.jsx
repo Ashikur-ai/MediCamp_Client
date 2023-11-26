@@ -6,6 +6,7 @@ import AvailableCamps from '../pages/AvailableCamps/AvailableCamps';
 import PrivateRoute from './PrivateRoutes';
 import Dashboard from '../pages/Dashboard/Dashboard';
 import ContactUs from '../pages/ContactUs/ContactUs';
+import CampDetails from '../pages/CampDetails/CampDetails';
 
 const router = createBrowserRouter([
     {
@@ -35,7 +36,12 @@ const router = createBrowserRouter([
             {
                 path: "/contact-us",
                 element: <ContactUs></ContactUs>
+            },
+            {
+                path: "/camp-details",
+                element: <CampDetails></CampDetails>
             }
+
         ]
     },
 ]);

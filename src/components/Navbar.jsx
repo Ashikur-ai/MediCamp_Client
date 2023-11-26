@@ -16,17 +16,17 @@ const Navbar = () => {
     console.log('from navbar', user)
     return (
         <>
-            <div className="text-gray-600 body-font">
+            <div className="text-gray-600 body-font container mx-auto ">
                 <div className=" mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
                     <Link to="/" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
                         <img src="https://i.ibb.co/1XFsYWr/logo.png" className='h-14' alt="" />
                         <span className="text-xl">MediCamp</span>
                     </Link>
                     <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-                        <Link to="/" className="mr-5 hover:text-gray-900">Home</Link>
-                        <Link to="/available-camp" className="mr-5 hover:text-gray-900">Available Camps</Link>
-                        <Link to="/dashboard" className="mr-5 hover:text-gray-900">Dashboard</Link>
-                        <Link to="/contact-us" className="mr-5 hover:text-gray-900">Contact Us</Link>
+                        <Link to="/" className="mr-5 hover:text-gray-900 font-bold">Home</Link>
+                        <Link to="/available-camp" className="mr-5 hover:text-gray-900 font-bold">Available Camps</Link>
+                        <Link to="/dashboard" className="mr-5 hover:text-gray-900 font-bold">Dashboard</Link>
+                        <Link to="/contact-us" className="mr-5 hover:text-gray-900 font-bold">Contact Us</Link>
                     </nav>
 
                     {
@@ -59,14 +59,14 @@ const Navbar = () => {
 
                             :
 
-                            <>
-                                <Link to="/login" className='btn btn-primary'>
+                            <div className='flex'>
+                                <Link to="/login" className='btn bg-red-700 text-white'>
                                     Login
                                 </Link>
-                                <Link to="/register" className='ml-3 btn btn-primary'>
+                                <Link to="/register" className='ml-3 btn text-white bg-red-700'>
                                     Register
                                 </Link>
-                            </>
+                            </div>
                     }
                 </div>
             </div>
