@@ -4,6 +4,8 @@ import { CgProfile } from "react-icons/cg";
 import { IoMdAddCircle } from "react-icons/io";
 import { MdManageAccounts } from "react-icons/md";
 import { FaRegistered } from "react-icons/fa6";
+import { RiMoneyDollarCircleFill, RiFeedbackFill } from "react-icons/ri";
+import { FcAcceptDatabase } from "react-icons/fc";
 
 const Dashboard = () => {
     
@@ -45,26 +47,15 @@ const Dashboard = () => {
                                 <>
                                     <li>
 
-                                        <NavLink to="/dashboard/organizer-profile">
+                                        <NavLink to="/dashboard/professional-profile">
                                             <CgProfile />
                                             Professional Profile</NavLink>
                                     </li>
                                     <li>
 
-                                        <NavLink to="/dashboard/addItems"><FaUtensils></FaUtensils>Add Items</NavLink>
+                                        <NavLink to="/dashboard/accepted-camps"><FcAcceptDatabase />Accepted Camps</NavLink>
                                     </li>
-                                    <li>
-
-                                        <NavLink to="/dashboard/manageItems"><FaList></FaList>Manage Items</NavLink>
-                                    </li>
-                                    <li>
-
-                                        <NavLink to="/dashboard/bookings"><FaBook></FaBook>Manage Bookings</NavLink>
-                                    </li>
-                                    <li>
-
-                                        <NavLink to="/dashboard/users"><FaUsers></FaUsers>All Users</NavLink>
-                                    </li>
+                                    
                                 </> 
                             :
 
@@ -77,20 +68,17 @@ const Dashboard = () => {
                                 </li>
                                 <li>
 
-                                    <NavLink to="/dashboard/cart"><FaShoppingCart></FaShoppingCart>My Cart </NavLink>
+                                        <NavLink to="/dashboard/registered-camps"><FaRegistered />Registered Camp </NavLink>
                                 </li>
                                 <li>
 
-                                    <NavLink to="/dashboard/reservation"><FaCalendar></FaCalendar>Reservation</NavLink>
+                                        <NavLink to="/dashboard/payment-history"><RiMoneyDollarCircleFill />Payment History</NavLink>
                                 </li>
                                 <li>
 
-                                    <NavLink to="/dashboard/review"><FaAd></FaAd>Review</NavLink>
+                                        <NavLink to="/dashboard/feedback-and-ratings"><RiFeedbackFill />Rating and Feedback</NavLink>
                                 </li>
-                                <li>
-
-                                    <NavLink to="/dashboard/paymentHistory"><FaList></FaList>My Payments</NavLink>
-                                </li>
+                                
                             </>
                     }
                     {/* shared nav links  */}

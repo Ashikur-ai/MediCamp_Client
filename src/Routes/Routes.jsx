@@ -11,8 +11,13 @@ import Dashboard from '../Layout/Dashboard';
 import OrganizerProfile from '../pages/Dashboard/Organizer/OrganizerProfile';
 import AddaCamp from '../pages/Dashboard/Organizer/AddaCamp';
 import ManageCamp from '../pages/Dashboard/Organizer/ManageCamp';
-import RegisteredCamp from '../pages/Dashboard/Organizer/RegisteredCamp';
 import ParticipantProfile from '../pages/Dashboard/Participant/ParticipantProfile';
+import ManageRegisteredCamp from '../pages/Dashboard/Organizer/ManageRegisteredCamp';
+import RegisteredCamp from '../pages/Dashboard/Participant/RegisteredCamp';
+import Payment from '../pages/Dashboard/Participant/Payment';
+import Feedback from '../pages/Dashboard/Participant/Feedback';
+import ProfessionalProfile from '../pages/Dashboard/Professional/ProfessionalProfile';
+import AcceptedCamps from '../pages/Dashboard/Professional/AcceptedCamps';
 
 const router = createBrowserRouter([
     {
@@ -71,14 +76,37 @@ const router = createBrowserRouter([
             },
             {
                 path: "manage-registered-camps",
-                element: <RegisteredCamp></RegisteredCamp>
+                element: <ManageRegisteredCamp></ManageRegisteredCamp>
             },
 
             // participant links 
             {
                 path: "participant-profile",
                 element: <ParticipantProfile></ParticipantProfile>
+            },
+            {
+                path: "registered-camps",
+                element: <RegisteredCamp></RegisteredCamp>
+            },
+            {
+                path: "payment-history",
+                element: <Payment></Payment>
+            },
+            {
+                path: "feedback-and-ratings",
+                element: <Feedback></Feedback>
+            },
+
+            // professional routes
+            {
+                path: "professional-profile",
+                element: <ProfessionalProfile></ProfessionalProfile>
+            },
+            {
+                path: "accepted-camps",
+                element: <AcceptedCamps></AcceptedCamps>
             }
+
         ]
     }
 ]);
