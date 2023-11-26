@@ -15,7 +15,7 @@ const Login = () => {
     }
     
     return (
-        <div>
+        <div className='min-h-screen'>
             <Helmet>
                 <title>MediCamp | Login</title>
             </Helmet>

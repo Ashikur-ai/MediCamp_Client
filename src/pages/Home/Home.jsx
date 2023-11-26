@@ -5,6 +5,7 @@ import Heading from '../../Shared/Heading';
 import CampCard from '../../Shared/CampCard';
 import Testimonials from './Testimonials';
 import UpcomingCamps from './UpcomingCamps';
+import Profile from './Profile';
 
 
 
@@ -32,6 +33,9 @@ const Home = () => {
 
             <div>
                <UpcomingCamps></UpcomingCamps>
+            </div>
+            <div >
+                <Profile></Profile>
             </div>
         </div>
     );
