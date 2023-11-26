@@ -4,9 +4,10 @@ import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
 import AvailableCamps from '../pages/AvailableCamps/AvailableCamps';
 import PrivateRoute from './PrivateRoutes';
-import Dashboard from '../pages/Dashboard/Dashboard';
 import ContactUs from '../pages/ContactUs/ContactUs';
 import CampDetails from '../pages/CampDetails/CampDetails';
+import Register from '../pages/Register/Register';
+import Dashboard from '../Layout/Dashboard';
 
 const router = createBrowserRouter([
     {
@@ -27,12 +28,7 @@ const router = createBrowserRouter([
                     <AvailableCamps></AvailableCamps>
                 </PrivateRoute>
             },
-            {
-                path: "/dashboard",
-                element: <PrivateRoute>
-                    <Dashboard></Dashboard>
-                </PrivateRoute>
-            },
+            
             {
                 path: "/contact-us",
                 element: <ContactUs></ContactUs>
@@ -40,10 +36,20 @@ const router = createBrowserRouter([
             {
                 path: "/camp-details",
                 element: <CampDetails></CampDetails>
+            },
+            {
+                path: "/register",
+                element: <Register></Register>
             }
 
         ]
     },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute>
+            <Dashboard></Dashboard>
+        </PrivateRoute>
+    }
 ]);
 
 export default router;

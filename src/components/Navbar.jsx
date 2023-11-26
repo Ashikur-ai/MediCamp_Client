@@ -1,19 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import Swal from 'sweetalert2';
+
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
     const handleLogOut = () => {
         logOut()
             .then(() => {
-
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Logout Successful",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             })
             .catch(error => {
 
             });
     }
-    console.log('from navbar', user)
     return (
         <>
             <div className="text-white bg-red-700 body-font border-white border-y-2">
@@ -33,18 +40,18 @@ const Navbar = () => {
                         user ?
                             <>
                                 <div className="dropdown dropdown-end">
-                                    <label tabIndex={0} className="btn btn-ghost btn-circle bg-blue-800 avatar">
+                                    <label tabIndex={0} className="btn btn-ghost btn-circle bg-white avatar">
 
                                         <div className="w-10 rounded-full">
                                             {
                                                 user.photoURL ?
                                                     <img src={`${user.photoURL}`} alt="" referrerpolicy="no-referrer" />
                                                     :
-                                                    <div className='font-bold text-2xl text-white'>{user.email.slice(0, 1)}</div>
+                                                    <div className='font-bold text-2xl bg-red-500 text-white'>{user.email.slice(0, 1)}</div>
                                             }
                                         </div>
                                     </label>
-                                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                    <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content text-black bg-base-100 rounded-box w-52">
                                         <li>
                                             <a className="justify-between">
                                                 {user.displayName ? user.displayName : user.email}
