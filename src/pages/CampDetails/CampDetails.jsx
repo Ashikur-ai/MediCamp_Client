@@ -2,14 +2,21 @@ import Heading from "../../Shared/Heading";
 import toast from 'react-hot-toast';
 import Swal from 'sweetalert2';
 import { TbCoinTakaFilled } from "react-icons/tb";
+import { Helmet } from "react-helmet-async";
 const CampDetails = () => {
     
     const handleCampRegister = (event) => {
         event.preventDefault();
         const form = event.target;
+        const name = form.name.value;
+        const age = form.age.value;
+        const phone = form.phone.value;
         const gender = form.gender.value;
-       
-        console.log(gender);
+        const address = form.address.value;
+        const fee = form.fee.value;
+        const emergency = form.emergency.value;
+        const data = { name, age, phone, gender, address, fee, emergency };
+        console.log(data);
         Swal.fire({
             position: "top-end",
             icon: "success",
@@ -21,6 +28,11 @@ const CampDetails = () => {
     }    
     return (
         <div className="min-h-screen">
+            <Helmet>
+                <title>
+                    MediCamp | Details
+                </title>
+            </Helmet>
             <Heading
             heading={"Campaign Details"}
             >
@@ -89,10 +101,10 @@ const CampDetails = () => {
                                                         <span className="label-text">Gender</span>
                                                     </label>
                                                     <span>Male</span>
-                                                    <input type="radio" name="gender" className="radio radio-warning" value={"male"} />
+                                                    <input type="radio" name="gender" className="radio radio-error" value={"male"} />
 
                                                     <span>Female</span>
-                                                    <input type="radio" name="gender" className="radio radio-warning" value={"female"} />
+                                                    <input type="radio" name="gender" className="radio radio-error" value={"female"} />
                                                 </div>
 
                                                 <div className="form-control">
@@ -100,6 +112,20 @@ const CampDetails = () => {
                                                         <span className="label-text">Address</span>
                                                     </label>
                                                     <input type="text" name="address" placeholder="Address" className="input input-bordered" required />
+                                                </div>
+
+                                                <div className="form-control">
+                                                    <label className="label">
+                                                        <span className="label-text">Camp Fee</span>
+                                                    </label>
+                                                    <input type="text" name="fee" readOnly placeholder="Camp fee" value={1500} className="input input-bordered" required />
+                                                </div>
+
+                                                <div className="form-control">
+                                                    <label className="label">
+                                                        <span className="label-text">Emergency Contact</span>
+                                                    </label>
+                                                    <input type="text" name="emergency" placeholder="Emergency Contact" className="input input-bordered" required />
                                                 </div>
 
 
