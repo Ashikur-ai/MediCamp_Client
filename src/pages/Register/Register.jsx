@@ -5,20 +5,34 @@ import { FcGoogle } from 'react-icons/fc';
 import { Link } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const Register = () => {
+    const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
     const { googleSignIn, SignUp } = useAuth();
     const handleSocialRegister = () => {
         googleSignIn()
             .then(result => {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Registration successful",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
+                const userInfo = {
+                    email: result.user?.email,
+                    name: result.user?.displayName
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Registration successful",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        navigate('/');
+                })
+                
             })
             .catch(error => {
                 console.log(error)
@@ -33,13 +47,25 @@ const Register = () => {
         console.log(email, password);
         SignUp(email, password)
             .then(result => {
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "Registration successful",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
+                const userInfo = {
+                    email: email,
+                    password: password
+                }
+                axiosPublic.post('/users', userInfo)
+                    .then(res => {
+                        if (res.data.insertedId) {
+                            console.log('user added to the database')
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Registration successful",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            navigate('/');
+                    }
+                })
+                
             })
             .catch(error => {
             console.log(error)

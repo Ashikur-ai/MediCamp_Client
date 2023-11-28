@@ -1,74 +1,75 @@
-import React from 'react';
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import useFindProfile from "../../../hooks/useFindProfile";
+import { useForm } from "react-hook-form";
 import Heading from '../../../Shared/Heading';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 
-const AddaCamp = () => {
+
+const UpdateOrganizerProfile = () => {
+    const profile = useFindProfile();
     const axiosSecure = useAxiosSecure();
     const { register, handleSubmit } = useForm();
-
-    const onSubmit = async (data) => {
+    const onSubmit = async(data) => {
         console.log(data)
         const res = await axiosSecure.patch('/updateProfile', data);
         if (res.data.modifiedCount) {
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `Camp added successfully`,
+                title: `Profile Updated`,
                 showConfirmButton: false,
                 timer: 1500
             });
         }
     }
-
     return (
         <div className="border shadow-lg mx-5 rounded-xl text-center min-h-screen ">
             <Heading
-            heading={"Add a Camp"}
-            />
-
+                heading={"Update Profile"}
+            ></Heading>
             <div className='w-2/3 mx-auto border rounded-lg p-6 shadow-xl'>
                 <form onSubmit={handleSubmit(onSubmit)}>
 
 
 
                     <div className="flex gap-6">
-                        {/* camp name  */}
+                        {/* name  */}
                         <div className="form-control w-full my-6">
                             <label className="label">
-                                <span className="label-text">Camp Name</span>
+                                <span className="label-text">Name</span>
 
                             </label>
                             <input
-                                {...register('camp_name')}
-                                type="text" placeholder="Enter camp name"  className="input input-bordered w-full " />
+                                {...register('name')}
+                                type="text" placeholder="Type your name" defaultValue={profile?.name} className="input input-bordered w-full " />
 
                         </div>
 
-                        {/* image  */}
+                        {/* email  */}
                         <div className="form-control w-full my-6">
                             <label className="label">
-                                <span className="label-text">Image</span>
+                                <span className="label-text">Email</span>
 
                             </label>
                             <input
-                                {...register('image')}
-                                type="text" placeholder="Type your email" className="input input-bordered w-full " />
+                                {...register('email')}
+                                type="email" placeholder="Type your email" value={profile?.email} readOnly className="input input-bordered w-full " />
 
                         </div>
                     </div>
 
                     <div className="flex gap-6">
-                        {/* camp fee  */}
+                        {/* phone  */}
                         <div className="form-control w-full my-6">
                             <label className="label">
-                                <span className="label-text">Camp Fee</span>
+                                <span className="label-text">Phone Number</span>
 
                             </label>
                             <input
                                 {...register('phone')}
-                                type="text" placeholder="Type your name" className="input input-bordered w-full " />
+                                type="text" placeholder="Type your name" defaultValue={profile?.phone} className="input input-bordered w-full " />
 
                         </div>
 
@@ -107,4 +108,4 @@ const AddaCamp = () => {
     );
 };
 
-export default AddaCamp;
+export default UpdateOrganizerProfile;

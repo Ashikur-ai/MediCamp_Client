@@ -31,7 +31,7 @@ const Testimonials = () => {
                     </div>
                 </SwiperSlide>
                 <SwiperSlide
-                    key={1}
+                    key={2}
                 >
                     <div className='flex flex-col items-center m-24'>
                         <Rating
@@ -45,7 +45,7 @@ const Testimonials = () => {
                 </SwiperSlide>
 
                 <SwiperSlide
-                    key={1}
+                    key={3}
                 >
                     <div className='flex flex-col items-center m-24'>
                         <Rating
@@ -59,7 +59,7 @@ const Testimonials = () => {
                 </SwiperSlide>
 
                 <SwiperSlide
-                    key={1}
+                    key={4}
                 >
                     <div className='flex flex-col items-center m-24'>
                         <Rating

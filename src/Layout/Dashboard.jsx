@@ -7,11 +7,14 @@ import { FaRegistered } from "react-icons/fa6";
 import { RiMoneyDollarCircleFill, RiFeedbackFill } from "react-icons/ri";
 import { FcAcceptDatabase } from "react-icons/fc";
 
+import useOrganizer from "../hooks/useOrganizer";
+import useProfessional from "../hooks/useProfessional";
+
 const Dashboard = () => {
     
     // TODO: get isAdmin value from the database 
-    const isProfessional = false;
-    const isOrganizer = false;
+    const [isProfessional] = useProfessional();
+    const [isOrganizer] = useOrganizer();
     
     return (
         <div className="flex">
@@ -39,6 +42,10 @@ const Dashboard = () => {
                                 <li>
 
                                     <NavLink to="/dashboard/manage-registered-camps"><FaRegistered />Manage Registered Camps</NavLink>
+                                </li>
+                                <li>
+
+                                    <NavLink to="/dashboard/manage-users"><FaUsers />Manage Users</NavLink>
                                 </li>
                             </>
                             

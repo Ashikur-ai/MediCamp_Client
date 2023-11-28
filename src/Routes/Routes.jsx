@@ -18,6 +18,8 @@ import Payment from '../pages/Dashboard/Participant/Payment';
 import Feedback from '../pages/Dashboard/Participant/Feedback';
 import ProfessionalProfile from '../pages/Dashboard/Professional/ProfessionalProfile';
 import AcceptedCamps from '../pages/Dashboard/Professional/AcceptedCamps';
+import ManageUser from '../pages/Dashboard/Organizer/ManageUser';
+import UpdateOrganizerProfile from '../pages/Dashboard/Organizer/UpdateOrganizerProfile';
 
 const router = createBrowserRouter([
     {
@@ -77,6 +79,14 @@ const router = createBrowserRouter([
             {
                 path: "manage-registered-camps",
                 element: <ManageRegisteredCamp></ManageRegisteredCamp>
+            },
+            {
+                path: "manage-users",
+                element: <ManageUser></ManageUser>
+            },
+            {
+                path: "update-profile",
+                element: <UpdateOrganizerProfile></UpdateOrganizerProfile>
             },
 
             // participant links 
