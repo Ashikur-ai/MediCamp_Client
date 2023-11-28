@@ -6,33 +6,58 @@ import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import useOrganizer from "../../hooks/useOrganizer";
 import useProfessional from "../../hooks/useProfessional";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAuth from "../../hooks/useAuth";
 
 const CampDetails = () => {
     const camp = useLoaderData(); 
     const [isOrganizer] = useOrganizer();
     const [isProfessional] = useProfessional();
+    const axiosSecure = useAxiosSecure();
+    const { user } = useAuth();
 
-    const handleCampRegister = (event) => {
+    const handleCampRegister = async(event) => {
         event.preventDefault();
-        const form = event.target;
-        const name = form.name.value;
-        const age = form.age.value;
-        const phone = form.phone.value;
-        const gender = form.gender.value;
-        const address = form.address.value;
-        const fee = form.fee.value;
-        const emergency = form.emergency.value;
-        const data = { name, age, phone, gender, address, fee, emergency };
-        console.log(data);
-        Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Your application has been saved",
-            showConfirmButton: false,
-            timer: 1500
-        });
+        
+        const registeredCamp = {
+            audience: camp?.audience,
+            camp_name: camp?.camp_name,
+            description: camp?.description,
+            fee: camp?.fee,
+            image: camp?.image,
+            professional: camp?.professional,
+            schedule: camp?.schedule,
+            service: camp?.service,
+            venue: camp?.venue,
+            camp_id: camp?._id,
+            email: user?.email
+        }
+       
+       
+        
 
-    }    
+        const res = await axiosSecure.post('/registeredCamp', registeredCamp);
+        if (res.data.insertedId) {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Registration Successful",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+        else {
+            Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "Already Registration Completed",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    }
+    
+
     return (
         <div className="min-h-screen">
             <Helmet>
@@ -129,7 +154,7 @@ const CampDetails = () => {
                                                     <label className="label">
                                                         <span className="label-text">Camp Fee</span>
                                                     </label>
-                                                    <input type="text" name="fee" readOnly placeholder="Camp fee" value={1500} className="input input-bordered" required />
+                                                    <input type="text" name="fee" readOnly placeholder="Camp fee" value={camp?.fee} className="input input-bordered" required />
                                                 </div>
 
                                                 <div className="form-control">

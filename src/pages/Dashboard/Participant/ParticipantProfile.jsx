@@ -3,6 +3,7 @@ import useFindProfile from '../../../hooks/useFindProfile';
 import { useForm } from "react-hook-form";
 import Heading from '../../../Shared/Heading';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const ParticipantProfile = () => {
     
@@ -13,6 +14,9 @@ const ParticipantProfile = () => {
             <Heading
                 heading={"Profile Information"}
             ></Heading>
+            <Helmet>
+                <title>MediCamp | Professional profile</title>
+            </Helmet>
             <div className='w-2/3 mx-auto border rounded-lg p-6 shadow-xl'>
                 <p>Name: {profile?.name}</p>
                 <p>Email: {profile?.email}</p>

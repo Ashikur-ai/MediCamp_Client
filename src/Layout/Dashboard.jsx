@@ -9,6 +9,7 @@ import { FcAcceptDatabase } from "react-icons/fc";
 
 import useOrganizer from "../hooks/useOrganizer";
 import useProfessional from "../hooks/useProfessional";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
     
@@ -18,6 +19,9 @@ const Dashboard = () => {
     
     return (
         <div className="flex">
+            <Helmet>
+                <title>MediCamp | Dashboard</title>
+            </Helmet>
             {/* dashboard side bar  */}
             <div className="w-1/4 min-h-screen bg-red-700 text-white rounded-r-2xl">
                 <ul className="menu p-4 text-xl">
