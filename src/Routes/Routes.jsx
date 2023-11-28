@@ -20,6 +20,7 @@ import ProfessionalProfile from '../pages/Dashboard/Professional/ProfessionalPro
 import AcceptedCamps from '../pages/Dashboard/Professional/AcceptedCamps';
 import ManageUser from '../pages/Dashboard/Organizer/ManageUser';
 import UpdateOrganizerProfile from '../pages/Dashboard/Organizer/UpdateOrganizerProfile';
+import UpdateCamp from '../pages/Dashboard/Organizer/UpdateCamp';
 
 const router = createBrowserRouter([
     {
@@ -88,6 +89,12 @@ const router = createBrowserRouter([
                 path: "update-profile",
                 element: <UpdateOrganizerProfile></UpdateOrganizerProfile>
             },
+            {
+                path: "update-camp/:campId",
+                element: <UpdateCamp></UpdateCamp>,
+                loader: ({ params }) => fetch(`http://localhost:5000/update-camp/${params.campId}`)
+            },
+            
 
             // participant links 
             {

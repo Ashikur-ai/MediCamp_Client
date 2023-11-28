@@ -1,18 +1,21 @@
-import React from 'react';
+import { useLoaderData } from "react-router-dom";
 import Heading from '../../../Shared/Heading';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
+import { Helmet } from "react-helmet-async";
 
-const AddaCamp = () => {
+const UpdateCamp = () => {
+    const camp = useLoaderData();
+
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const { register, handleSubmit, reset } = useForm();
-
+    
     const onSubmit = async (data) => {
-        const camp = {
-            email : user?.email,
+        const updatedCamp = {
+            email: user?.email,
             audience: data?.audience,
             camp_name: data?.camp_name,
             description: data?.description,
@@ -23,25 +26,31 @@ const AddaCamp = () => {
             service: data?.service,
             venue: data?.venue
         }
-        
-        const res = await axiosSecure.post('/camps', camp);
-        if (res.data.insertedId) {
-            reset();
+
+        const res = await axiosSecure.patch(`/update-camp/${camp._id}`, updatedCamp);
+        console.log(res.data);
+        if (res.data.modifiedCount > 0) {
+            
             Swal.fire({
                 position: "top-end",
                 icon: "success",
-                title: `Camp added successfully`,
+                title: `Campaign updated successfully`,
                 showConfirmButton: false,
                 timer: 1500
             });
-            
+            reset();
+
         }
     }
 
+
     return (
         <div className="border shadow-lg mx-5 rounded-xl text-center min-h-screen ">
+            <Helmet>
+                <title>MediCamp | Update Camp</title>
+            </Helmet>
             <Heading
-            heading={"Add a Camp"}
+                heading={"Update Campaign"}
             />
 
             <div className='w-2/3 mx-auto border rounded-lg p-6 shadow-xl'>
@@ -58,7 +67,7 @@ const AddaCamp = () => {
                             </label>
                             <input
                                 {...register('camp_name')}
-                                type="text" placeholder="Enter camp name"  className="input input-bordered w-full " />
+                                type="text" defaultValue={camp?.camp_name} placeholder="Enter camp name" className="input input-bordered w-full " />
 
                         </div>
 
@@ -70,7 +79,7 @@ const AddaCamp = () => {
                             </label>
                             <input
                                 {...register('image')}
-                                type="text" placeholder="Paste image url" className="input input-bordered w-full " />
+                                type="text" defaultValue={camp?.image} placeholder="Paste image url" className="input input-bordered w-full " />
 
                         </div>
                     </div>
@@ -84,7 +93,7 @@ const AddaCamp = () => {
                             </label>
                             <input
                                 {...register('fee')}
-                                type="text" placeholder="Enter camp fee" className="input input-bordered w-full " />
+                                type="text" defaultValue={camp?.fee} placeholder="Enter camp fee" className="input input-bordered w-full " />
 
                         </div>
 
@@ -96,11 +105,13 @@ const AddaCamp = () => {
                             </label>
                             <input
                                 {...register('schedule')}
-                                 placeholder="Enter schedule"  className="input input-bordered w-full " />
+                                placeholder="Enter schedule"
+                                defaultValue={camp?.schedule}
+                                className="input input-bordered w-full " />
 
                         </div>
                     </div>
-                   
+
                     <div className='flex gap-6'>
                         {/* venue  */}
                         <div className="form-control w-full my-6">
@@ -110,7 +121,7 @@ const AddaCamp = () => {
                             </label>
                             <input
                                 {...register('venue')}
-                                type="text" placeholder="Enter venue" className="input input-bordered w-full " />
+                                type="text" defaultValue={camp?.venue} placeholder="Enter venue" className="input input-bordered w-full " />
 
                         </div>
 
@@ -122,7 +133,7 @@ const AddaCamp = () => {
                             </label>
                             <input
                                 {...register('service')}
-                                type="text" placeholder="Enter Specialized Service Provided" className="input input-bordered w-full " />
+                                type="text" defaultValue={camp?.service} placeholder="Enter Specialized Service Provided" className="input input-bordered w-full " />
 
                         </div>
 
@@ -137,7 +148,7 @@ const AddaCamp = () => {
                             </label>
                             <input
                                 {...register('professional')}
-                                type="text" placeholder="Name of Healthcare Professional" className="input input-bordered w-full " />
+                                type="text" defaultValue={camp?.professional} placeholder="Name of Healthcare Professional" className="input input-bordered w-full " />
 
                         </div>
 
@@ -149,7 +160,7 @@ const AddaCamp = () => {
                             </label>
                             <input
                                 {...register('audience')}
-                                type="text" placeholder="Enter target audience" className="input input-bordered w-full " />
+                                type="text" defaultValue={camp?.audience} placeholder="Enter target audience" className="input input-bordered w-full " />
 
                         </div>
                     </div>
@@ -161,9 +172,10 @@ const AddaCamp = () => {
                             <span className="label-text">Description</span>
 
                         </label>
-                        
+
                         <textarea
                             {...register('description')}
+                            defaultValue={camp?.description}
                             placeholder="Enter comprehensive description"
                             className="input input-bordered w-full h-24"
                         ></textarea>
@@ -175,11 +187,11 @@ const AddaCamp = () => {
 
 
 
-                    <button className="btn">Update</button>
+                    <button className="btn text-white bg-red-700">Update</button>
                 </form>
             </div>
         </div>
     );
 };
 
-export default AddaCamp;
+export default UpdateCamp;
