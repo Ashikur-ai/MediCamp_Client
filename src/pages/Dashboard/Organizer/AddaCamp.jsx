@@ -4,6 +4,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 
 const AddaCamp = () => {
     const axiosSecure = useAxiosSecure();
@@ -41,8 +42,11 @@ const AddaCamp = () => {
     return (
         <div className="border shadow-lg mx-5 rounded-xl text-center min-h-screen ">
             <Heading
-            heading={"Add a Camp"}
+            heading={"Add a Campaign"}
             />
+            <Helmet>
+                <title>MediCamp | Add Camp</title>
+            </Helmet>
 
             <div className='w-2/3 mx-auto border rounded-lg p-6 shadow-xl'>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -175,7 +179,7 @@ const AddaCamp = () => {
 
 
 
-                    <button className="btn">Update</button>
+                    <button className="btn text-white bg-red-700">Add Campaign</button>
                 </form>
             </div>
         </div>

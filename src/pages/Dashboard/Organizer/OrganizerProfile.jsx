@@ -5,6 +5,7 @@ import useFindProfile from "../../../hooks/useFindProfile";
 import { useForm } from "react-hook-form";
 import Heading from '../../../Shared/Heading';
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const OrganizerProfile = () => {
@@ -26,6 +27,9 @@ const OrganizerProfile = () => {
     }
     return (
         <div className="border shadow-lg mx-5 rounded-xl text-center min-h-screen ">
+            <Helmet>
+                <title>MediCamp | Profile Organizer</title>
+            </Helmet>
             <Heading
                 heading={"Profile Information"}
             ></Heading>
@@ -36,7 +40,7 @@ const OrganizerProfile = () => {
                 <p>Role: {profile?.role}</p>
                 <p>Address: {profile?.address}</p>
                 <Link to="/dashboard/update-profile">
-                    <button className="btn">Update</button>
+                    <button className="btn text-white bg-red-700">Update</button>
                 </Link>
             </div>
         </div>

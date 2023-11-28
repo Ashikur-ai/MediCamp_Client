@@ -6,6 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 
 import Swal from 'sweetalert2';
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -59,6 +60,9 @@ const ManageCamp = () => {
             <Heading
             heading={"Manage Campaigns"}
             ></Heading>
+            <Helmet>
+                <title>MediCamp | Manage Camp</title>
+            </Helmet>
             <section className="text-gray-600 body-font overflow-hidden">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="-my-8 divide-y-2 divide-gray-100">
@@ -86,8 +90,8 @@ const ManageCamp = () => {
                                 </div>
 
                                 <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col justify-center">
-                                    <Link to={`/dashboard/update-camp/${camp._id}`}><button className="btn w-full">Update</button></Link>
-                                    <button onClick={() => handleDelete(camp._id)} className="btn mt-5">Delete</button>
+                                    <Link to={`/dashboard/update-camp/${camp._id}`}><button className="btn text-white bg-red-700 w-full">Update</button></Link>
+                                    <button onClick={() => handleDelete(camp._id)} className="btn text-white bg-red-700 mt-5">Delete</button>
                                 </div>
 
                             </div>)

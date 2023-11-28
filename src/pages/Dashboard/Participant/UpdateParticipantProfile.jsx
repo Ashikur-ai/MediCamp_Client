@@ -7,13 +7,13 @@ import Heading from '../../../Shared/Heading';
 import Swal from 'sweetalert2';
 import { Helmet } from "react-helmet-async";
 
-
-const UpdateOrganizerProfile = () => {
+const UpdateParticipantProfile = () => {
     const profile = useFindProfile();
     const axiosSecure = useAxiosSecure();
     const { register, handleSubmit } = useForm();
-    const onSubmit = async(data) => {
-        console.log(data)
+
+    const onSubmit = async (data) => {
+        
         const res = await axiosSecure.patch('/updateProfile', data);
         if (res.data.modifiedCount) {
             Swal.fire({
@@ -28,10 +28,10 @@ const UpdateOrganizerProfile = () => {
     return (
         <div className="border shadow-lg mx-5 rounded-xl text-center min-h-screen ">
             <Heading
-                heading={"Update Organizer Profile"}
+                heading={"Update Participant Profile"}
             ></Heading>
             <Helmet>
-                <title>MediCamp | Update Organizer</title>
+                <title>MediCamp | update Participant Profile</title>
             </Helmet>
             <div className='w-2/3 mx-auto border rounded-lg p-6 shadow-xl'>
                 <form onSubmit={handleSubmit(onSubmit)}>
@@ -85,7 +85,7 @@ const UpdateOrganizerProfile = () => {
                             </label>
                             <input
                                 {...register('role')}
-                                type="email" placeholder="Type your role" value={profile?.role} readOnly className="input input-bordered w-full " />
+                                type="email" placeholder="Type your role" value={"participant"} readOnly className="input input-bordered w-full " />
 
                         </div>
                     </div>
@@ -112,4 +112,4 @@ const UpdateOrganizerProfile = () => {
     );
 };
 
-export default UpdateOrganizerProfile;
+export default UpdateParticipantProfile;

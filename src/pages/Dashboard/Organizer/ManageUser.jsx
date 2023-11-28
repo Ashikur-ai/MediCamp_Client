@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from 'sweetalert2'
 import toast from 'react-hot-toast';
+import { Helmet } from "react-helmet-async";
 
 const ManageUser = () => {
     const axiosSecure = useAxiosSecure();
@@ -74,6 +75,9 @@ const ManageUser = () => {
 
     return (
         <div className="border shadow-lg mx-5 rounded-xl min-h-screen ">
+            <Helmet>
+                <title>MediCamp | Manage User</title>
+            </Helmet>
             <div className='flex justify-evenly my-4'>
                 <h2 className="text-3xl">All Users</h2>
                 <h2 className="text-3xl">Total Users: {users.length}</h2>
@@ -105,14 +109,14 @@ const ManageUser = () => {
                                             user?.role === 'professional' ? 'Professional' 
                                                 :
                                                 <>
-                                                    <button className="btn" onClick={() => handleMakeOrganizer(user)}>Make Organizer</button>
-                                                    <button className="btn ml-3" onClick={() => handleMakeProfessional(user)}>Make Professional</button>
+                                                    <button className="btn text-white bg-red-700" onClick={() => handleMakeOrganizer(user)}>Make Organizer</button>
+                                                    <button className="btn text-white bg-red-700 ml-3" onClick={() => handleMakeProfessional(user)}>Make Professional</button>
                                                 </>
 
                                     }
                                 </td>
                                 <td>
-                                    <button className="btn" onClick={() => handleDeleteUser(user)}>Delete</button>
+                                    <button className="btn text-white bg-red-700" onClick={() => handleDeleteUser(user)}>Delete</button>
                                 </td>
                             </tr>)
                         }
