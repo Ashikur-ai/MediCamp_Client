@@ -25,6 +25,10 @@ const Home = () => {
 
     
 
+    
+
+    
+
 
     return (
         <div>
@@ -52,6 +56,8 @@ const Home = () => {
 
             <div className='container mx-auto'>
                 <Testimonials></Testimonials>
+                
+                
             </div>
 
             <div>
