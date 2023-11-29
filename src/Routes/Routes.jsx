@@ -25,6 +25,7 @@ import UpdateParticipantProfile from '../pages/Dashboard/Participant/UpdateParti
 import UpdateProfessionalProfile from '../pages/Dashboard/Professional/UpdateProfessionalProfile';
 import StripePayment from '../pages/Dashboard/Participant/StripePayment';
 import FeedbackForm from '../pages/Dashboard/Participant/FeedbackForm';
+import AddUpcomingCamp from '../pages/Dashboard/Organizer/AddUpcomingCamp';
 
 const router = createBrowserRouter([
     {
@@ -101,7 +102,10 @@ const router = createBrowserRouter([
                 element: <UpdateCamp></UpdateCamp>,
                 loader: ({ params }) => fetch(`http://localhost:5000/update-camp/${params.campId}`)
             },
-            
+            {
+                path: "add-upcoming-camp",
+                element: <AddUpcomingCamp></AddUpcomingCamp>
+            },
 
             // participant links 
             {
