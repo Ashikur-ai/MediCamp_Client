@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import toast from 'react-hot-toast';
 import { Helmet } from "react-helmet-async";
 

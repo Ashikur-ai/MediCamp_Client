@@ -4,11 +4,16 @@ import useAuth from '../../../hooks/useAuth';
 import useAxiosPublic from '../../../hooks/useAxiosPublic';
 import { useQuery } from "@tanstack/react-query";
 import Heading from '../../../Shared/Heading';
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+
 
 const RegisteredCamp = () => {
 
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const { data: registeredCamps = [], refetch } = useQuery({
         queryKey: ['registeredCamps'],
         queryFn: async () => {
@@ -16,6 +21,35 @@ const RegisteredCamp = () => {
             return res.data;
         }
     })
+
+    
+
+    const handleCancel = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axiosSecure.delete(`/delete-registered-camp/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your campaign has been deleted.",
+                                icon: "success"
+                            });
+                        }
+                    })
+
+            }
+        });
+    }
 
    
     return (
@@ -53,9 +87,26 @@ const RegisteredCamp = () => {
                                     <td>{ camp.schedule }</td>
                                     <td>{camp.venue}</td>
                                     <td>{camp.fee}</td>
-                                    <td><button className='btn text-white bg-green-700'>Pay</button></td>
-                                    <td>Pending</td>
-                                    <td><button className='btn text-white bg-red-700'>Cancel</button></td>
+                                    {
+                                        camp.payment ? 
+                                            <td><button className='btn  bg-green-700' disabled>Paid</button></td>
+
+                                        :
+                                            <Link to={`/dashboard/stripe-payment/${camp._id}`}><td><button className='btn text-white bg-green-700'>Pay</button></td></Link>
+
+                                    }
+                                    {
+                                        camp.confirm ? 
+                                            <td>Confirmed</td>
+                                            :
+                                            <td>Pending</td>
+                                    }
+                                    {
+                                        camp.payment ? 
+                                            <td><button disabled className='btn text-white bg-red-700'>Cancel</button></td>
+                                            :
+                                            <td><button onClick={()=>handleCancel(camp._id)} className='btn text-white bg-red-700'>Cancel</button></td>
+                                    }
                             </tr>)
                         }
                         

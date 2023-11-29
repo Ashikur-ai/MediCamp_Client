@@ -22,6 +22,9 @@ import ManageUser from '../pages/Dashboard/Organizer/ManageUser';
 import UpdateOrganizerProfile from '../pages/Dashboard/Organizer/UpdateOrganizerProfile';
 import UpdateCamp from '../pages/Dashboard/Organizer/UpdateCamp';
 import UpdateParticipantProfile from '../pages/Dashboard/Participant/UpdateParticipantProfile';
+import UpdateProfessionalProfile from '../pages/Dashboard/Professional/UpdateProfessionalProfile';
+import StripePayment from '../pages/Dashboard/Participant/StripePayment';
+import FeedbackForm from '../pages/Dashboard/Participant/FeedbackForm';
 
 const router = createBrowserRouter([
     {
@@ -49,7 +52,9 @@ const router = createBrowserRouter([
             },
             {
                 path: "/camp-details/:campId",
-                element: <CampDetails></CampDetails>,
+                element: <PrivateRoute>
+                    <CampDetails></CampDetails>
+                </PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/update-camp/${params.campId}`)
             },
             {
@@ -104,6 +109,12 @@ const router = createBrowserRouter([
                 element: <UpdateParticipantProfile></UpdateParticipantProfile>
             },
             {
+                path: "review-camp/:id",
+                element: <FeedbackForm></FeedbackForm>,
+                loader: ({ params }) => fetch(`http://localhost:5000/registerCamp/${params.id}`)
+                
+            },
+            {
                 path: "participant-profile",
                 element: <ParticipantProfile></ParticipantProfile>
             },
@@ -119,6 +130,11 @@ const router = createBrowserRouter([
                 path: "feedback-and-ratings",
                 element: <Feedback></Feedback>
             },
+            {
+                path: "stripe-payment/:campId",
+                element: <StripePayment></StripePayment>,
+                loader: ({ params }) => fetch(`http://localhost:5000/registerCamp/${params.campId}`)
+            },
 
             // professional routes
             {
@@ -128,6 +144,10 @@ const router = createBrowserRouter([
             {
                 path: "accepted-camps",
                 element: <AcceptedCamps></AcceptedCamps>
+            },
+            {
+                path: "update-profile/professional",
+                element: <UpdateProfessionalProfile></UpdateProfessionalProfile>
             }
 
         ]

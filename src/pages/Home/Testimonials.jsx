@@ -22,7 +22,7 @@ const Testimonials = () => {
                     <div className='flex flex-col items-center m-24'>
                         <Rating
                             style={{ maxWidth: 180 }}
-                            value={4}
+                            value={"4"}
                             readOnly
                         />
                         <p>Community Resilience in the Face of Adversity: A Unified Front Against the COVID-19 Pandemic</p>
