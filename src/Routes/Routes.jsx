@@ -26,6 +26,9 @@ import UpdateProfessionalProfile from '../pages/Dashboard/Professional/UpdatePro
 import StripePayment from '../pages/Dashboard/Participant/StripePayment';
 import FeedbackForm from '../pages/Dashboard/Participant/FeedbackForm';
 import AddUpcomingCamp from '../pages/Dashboard/Organizer/AddUpcomingCamp';
+import UpcomingCampDetails from '../pages/CampDetails/UpcomingCampDetails';
+import ManageUpcomingCamp from '../pages/Dashboard/Organizer/ManageUpcomingCamp';
+import UpdateUpcomingCamp from '../pages/Dashboard/Organizer/UpdateUpcomingCamp';
 
 const router = createBrowserRouter([
     {
@@ -58,6 +61,14 @@ const router = createBrowserRouter([
                 </PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/update-camp/${params.campId}`)
             },
+            {
+                path: "/upcoming-camp-details/:id",
+                element: <PrivateRoute>
+                    <UpcomingCampDetails></UpcomingCampDetails>
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/upcomingCamp/${params.id}`)
+            },
+
             {
                 path: "/register",
                 element: <Register></Register>
@@ -103,8 +114,17 @@ const router = createBrowserRouter([
                 loader: ({ params }) => fetch(`http://localhost:5000/update-camp/${params.campId}`)
             },
             {
+                path: "update-upcoming-camp/:campId",
+                element: <UpdateUpcomingCamp></UpdateUpcomingCamp>,
+                loader: ({ params }) => fetch(`http://localhost:5000/upcomingCamp/${params.campId}`)
+            },
+            {
                 path: "add-upcoming-camp",
                 element: <AddUpcomingCamp></AddUpcomingCamp>
+            },
+            {
+                path: "manage-upcoming-camp",
+                element: <ManageUpcomingCamp></ManageUpcomingCamp>
             },
 
             // participant links 

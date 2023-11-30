@@ -54,6 +54,10 @@ const Dashboard = () => {
 
                                     <NavLink to="/dashboard/add-upcoming-camp"><IoMdAddCircle />Add Upcoming Camps</NavLink>
                                 </li>
+                                <li>
+
+                                    <NavLink to="/dashboard/manage-upcoming-camp"><FaRegistered />Manage Upcoming Camps</NavLink>
+                                </li>
                                 
                             </>
 

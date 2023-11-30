@@ -24,14 +24,14 @@ const Profile = () => {
                         <div className="flex flex-col items-center m-24">
                             <div className="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
                                 <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg h-80 rounded-xl bg-clip-border">
-                                    <img src="https://docs.material-tailwind.com/img/team-3.jpg" alt="profile-picture" />
+                                    <img src="https://i.ibb.co/wwcKCxd/doctor4.png" alt="profile-picture" />
                                 </div>
                                 <div className="p-6 text-center">
                                     <h4 className="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                                        Natalie Paisley
+                                        Pervin Sultana
                                     </h4>
                                     <p className="block font-sans text-base antialiased font-medium leading-relaxed text-transparent bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text">
-                                        CEO / Co-Founder
+                                        MBBS
                                     </p>
                                 </div>
                                 <div className="flex justify-center p-6 pt-2 gap-7">
@@ -64,14 +64,14 @@ const Profile = () => {
                         <div className="flex flex-col items-center m-24">
                             <div className="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
                                 <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg h-80 rounded-xl bg-clip-border">
-                                    <img src="https://docs.material-tailwind.com/img/team-3.jpg" alt="profile-picture" />
+                                    <img src="https://i.ibb.co/Kjd2t0W/doctor1.jpg" alt="profile-picture" />
                                 </div>
                                 <div className="p-6 text-center">
                                     <h4 className="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                                        Natalie Paisley
+                                        Alex Decosta
                                     </h4>
                                     <p className="block font-sans text-base antialiased font-medium leading-relaxed text-transparent bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text">
-                                        CEO / Co-Founder
+                                        MBBS, Orthopedics
                                     </p>
                                 </div>
                                 <div className="flex justify-center p-6 pt-2 gap-7">
@@ -104,14 +104,14 @@ const Profile = () => {
                         <div className="flex flex-col items-center m-24">
                             <div className="relative flex flex-col text-gray-700 bg-white shadow-md w-96 rounded-xl bg-clip-border">
                                 <div className="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white shadow-lg h-80 rounded-xl bg-clip-border">
-                                    <img src="https://docs.material-tailwind.com/img/team-3.jpg" alt="profile-picture" />
+                                    <img src="https://i.ibb.co/wgmqX7N/doctor3.jpg" alt="profile-picture" />
                                 </div>
                                 <div className="p-6 text-center">
                                     <h4 className="block mb-2 font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
-                                        Natalie Paisley
+                                        Emili DeCosta
                                     </h4>
                                     <p className="block font-sans text-base antialiased font-medium leading-relaxed text-transparent bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text">
-                                        CEO / Co-Founder
+                                        MBBS, FCPS
                                     </p>
                                 </div>
                                 <div className="flex justify-center p-6 pt-2 gap-7">

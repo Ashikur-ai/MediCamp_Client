@@ -1,10 +1,34 @@
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+import { useEffect, useState } from 'react';
+import { Rating } from '@smastrom/react-rating';
+import '@smastrom/react-rating/style.css'
 import Heading from '../../Shared/Heading';
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from '../../hooks/useAxiosPublic';
+import CampCard from '../../Shared/CampCard';
+import UpcomingCampCard from '../../Shared/UpcomingCampCard';
 
 const UpcomingCamps = () => {
+
+    const axiosPublic = useAxiosPublic();
+
+    const { data: upcomingCamps = [] } = useQuery({
+        queryKey: ['upcomingCamps'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/upcomingCamp');
+            return res.data;
+        }
+    })
+
     return (
         <div>
             <Heading
-                heading={"Upcoming Campaigns"}
+                heading={"Upcoming Campaigns: Building Bridges to Better Health, our Campaign Countdown Begins."}
             ></Heading>
             <div className='lg:flex container mx-auto px-10 pt-10'>
                 <div className='lg:w-1/2'>
@@ -13,9 +37,23 @@ const UpcomingCamps = () => {
                     <img className='rounded-xl shadow-xl w-96 z-20 relative -mt-24 ' src="https://i.ibb.co/m5q8VvX/uc3.png" alt="" />
                 </div>
                 <div className='lg:w-1/2'> 
-                    <p className='text-2xl md:text-4xl lg:text-5xl font-bold text-red-700'>Building Bridges to Better Health: Our Campaign Countdown Begins.</p>
+                    <p className='text-2xl md:text-4xl lg:text-5xl font-bold text-red-700'></p>
 
-                    <p className='mt-5'>Get ready to be part of something truly empowering with our upcoming campaign, "Rising Together." More than just a health program, this initiative is a rallying call for our community to unite and uplift every individual towards a healthier and more vibrant life. Through a series of impactful events and projects, "Rising Together" aims to reshape the narrative of health, emphasizing the strength and support that can be found within our neighborhoods. From fitness challenges that promote an active lifestyle to initiatives fostering mental well-being, this campaign is designed to create lasting positive change. Join us as we collectively rise, inspiring a wave of wellness that touches every corner of our community. "Rising Together" is not just a campaign; it's a movement towards a healthier, more connected tomorrow.</p>
+                    <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+                        {
+                            upcomingCamps?.map(camp => <SwiperSlide
+                                key={camp._id}
+                            >
+                                <UpcomingCampCard
+                                camp={camp}
+                                ></UpcomingCampCard>
+                                
+                            </SwiperSlide>)
+                        }
+
+
+                    </Swiper>
+                    
                 </div>
             </div>
         </div>
