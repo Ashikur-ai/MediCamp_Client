@@ -29,11 +29,13 @@ import AddUpcomingCamp from '../pages/Dashboard/Organizer/AddUpcomingCamp';
 import UpcomingCampDetails from '../pages/CampDetails/UpcomingCampDetails';
 import ManageUpcomingCamp from '../pages/Dashboard/Organizer/ManageUpcomingCamp';
 import UpdateUpcomingCamp from '../pages/Dashboard/Organizer/UpdateUpcomingCamp';
+import ErrorPage from '../pages/ErrorPage';
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -49,7 +51,7 @@ const router = createBrowserRouter([
                     <AvailableCamps></AvailableCamps>
                 </PrivateRoute>
             },
-            
+
             {
                 path: "/contact-us",
                 element: <ContactUs></ContactUs>
@@ -59,14 +61,14 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <CampDetails></CampDetails>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/update-camp/${params.campId}`)
+                loader: ({ params }) => fetch(`https://medicamp-server.vercel.app/update-camp/${params.campId}`)
             },
             {
                 path: "/upcoming-camp-details/:id",
                 element: <PrivateRoute>
                     <UpcomingCampDetails></UpcomingCampDetails>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/upcomingCamp/${params.id}`)
+                loader: ({ params }) => fetch(`https://medicamp-server.vercel.app/upcomingCamp/${params.id}`)
             },
 
             {
@@ -83,7 +85,7 @@ const router = createBrowserRouter([
         </PrivateRoute>,
         children: [
             // organizer links 
-            
+
             {
                 path: "organizer-profile",
                 element: <OrganizerProfile></OrganizerProfile>
@@ -111,12 +113,12 @@ const router = createBrowserRouter([
             {
                 path: "update-camp/:campId",
                 element: <UpdateCamp></UpdateCamp>,
-                loader: ({ params }) => fetch(`http://localhost:5000/update-camp/${params.campId}`)
+                loader: ({ params }) => fetch(`https://medicamp-server.vercel.app/update-camp/${params.campId}`)
             },
             {
                 path: "update-upcoming-camp/:campId",
                 element: <UpdateUpcomingCamp></UpdateUpcomingCamp>,
-                loader: ({ params }) => fetch(`http://localhost:5000/upcomingCamp/${params.campId}`)
+                loader: ({ params }) => fetch(`https://medicamp-server.vercel.app/upcomingCamp/${params.campId}`)
             },
             {
                 path: "add-upcoming-camp",
@@ -135,8 +137,8 @@ const router = createBrowserRouter([
             {
                 path: "review-camp/:id",
                 element: <FeedbackForm></FeedbackForm>,
-                loader: ({ params }) => fetch(`http://localhost:5000/registerCamp/${params.id}`)
-                
+                loader: ({ params }) => fetch(`https://medicamp-server.vercel.app/registerCamp/${params.id}`)
+
             },
             {
                 path: "participant-profile",
@@ -157,7 +159,7 @@ const router = createBrowserRouter([
             {
                 path: "stripe-payment/:campId",
                 element: <StripePayment></StripePayment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/registerCamp/${params.campId}`)
+                loader: ({ params }) => fetch(`https://medicamp-server.vercel.app/registerCamp/${params.campId}`)
             },
 
             // professional routes

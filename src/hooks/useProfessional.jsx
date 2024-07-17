@@ -9,7 +9,6 @@ const useProfessional = () => {
         queryKey: [user?.email, 'isProfessional'],
         queryFn: async () => {
             const res = await axiosSecure.get(`/users/professional/${user.email}`);
-            console.log(res.data);
             return res.data?.professional;
         }
     })
